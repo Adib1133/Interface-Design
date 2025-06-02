@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+
+    <link href="../framework/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../framework/css/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="../framework/css/styles.css">
+    <script src="../framework/js/vue.js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrationModalLabel">Registration Successful!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="registration-summary">
+                            <h4>Registration Details</h4>
+                            <div class="summary-item">
+                                <span class="summary-label">Username:</span>
+                                <span class="summary-value">{{ form.username }}</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Selected Category:</span>
+                                <span class="summary-value">{{ form.category }}</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Selected Event:</span>
+                                <span class="summary-value">{{ form.eventName }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-calendar-alt me-2"></i>EventPro
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#events">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Elevate Your Events</h1>
+                    <p class="lead">Professional event management solutions for unforgettable experiences</p>
+                    <a href="#register" class="btn btn-primary btn-lg">Register Now</a>
+                </div>
+            </div>
+        </section>
+        
+        <div class="container main-content">
+            <section class="features-section">
+                <div class="section-header">
+                    <span class="section-subtitle">Why Choose Us</span>
+                    <h2 class="section-title">Our Competitive Advantages</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Efficient Planning</h3>
+                            <p>Streamlined processes that save you time and deliver exceptional results.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h3>Precision Timing</h3>
+                            <p>Flawless execution that keeps your event on schedule every time.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h3>Expert Team</h3>
+                            <p>Industry professionals dedicated to making your event a success.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Client Focused</h3>
+                            <p>Exceptional service that exceeds expectations and builds loyalty.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h3>Value Solutions</h3>
+                            <p>Cost-effective packages without compromising on quality.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Clear Communication</h3>
+                            <p>Transparent processes that keep you informed at every stage.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="events-section" id="events">
+                <div class="section-header">
+                    <span class="section-subtitle">Browse Our</span>
+                    <h2 class="section-title">Upcoming Events</h2>
+                </div>
+                <div class="filter-controls">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+                                <input type="text" class="form-control" v-model="filters.id" placeholder="Event ID">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                <input type="text" class="form-control" v-model="filters.name" placeholder="Event Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-hourglass"></i></span>
+                                <input type="number" class="form-control" v-model.number="filters.duration" placeholder="Duration (hours)">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="category-filters">
+                                <div class="form-check form-check-inline" v-for="cat in categories" :key="cat">
+                                    <input class="form-check-input" type="radio" v-model="filters.category" :value="cat">
+                                    <label class="form-check-label">{{ cat }}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="events-table-container">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Event ID</th>
+                                    <th>Event Name</th>
+                                    <th>Category</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="event in filteredEvents" :key="event.id">
+                                    <td>{{ event.id }}</td>
+                                    <td>{{ event.name }}</td>
+                                    <td><span class="badge bg-primary">{{ event.category }}</span></td>
+                                    <td>{{ event.duration }} hours</td>
+                                </tr>
+                                <tr v-if="filteredEvents.length === 0">
+                                    <td colspan="4" class="text-center py-4">No events found matching your criteria</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="registration-section" id="register">
+                <div class="section-header">
+                    <span class="section-subtitle">Join Our</span>
+                    <h2 class="section-title">Event Registration</h2>
+                </div>
+                <div class="registration-form-container">
+                    <form @submit.prevent="submitForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" v-model="form.username" placeholder="Username" required>
+                                    <label>Username</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" v-model="form.password" placeholder="Password" required>
+                                    <label>Password</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" v-model="form.confirm" placeholder="Confirm Password" required>
+                                    <label>Confirm Password</label>
+                                    <div class="password-feedback">
+                                        <span v-if="form.password === form.confirm && form.confirm" class="text-success">
+                                            <i class="fas fa-check-circle"></i> Passwords match
+                                        </span>
+                                        <span v-else-if="form.confirm" class="text-danger">
+                                            <i class="fas fa-times-circle"></i> Passwords don't match
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h4 class="form-section-title">Event Selection</h4>
+                            <div class="category-options">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" v-model="form.category" id="categoryBusiness" value="Business" checked>
+                                    <label class="form-check-label" for="categoryBusiness">
+                                        <i class="fas fa-briefcase"></i> Business
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" v-model="form.category" id="categoryTech" value="Technology">
+                                    <label class="form-check-label" for="categoryTech">
+                                        <i class="fas fa-laptop-code"></i> Technology
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" v-model="form.category" id="categoryMarketing" value="Marketing">
+                                    <label class="form-check-label" for="categoryMarketing">
+                                        <i class="fas fa-bullhorn"></i> Marketing
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" v-model="form.category" id="categoryFinance" value="Finance">
+                                    <label class="form-check-label" for="categoryFinance">
+                                        <i class="fas fa-chart-line"></i> Finance
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-floating">
+                                <select class="form-select" v-model="form.eventName" required>
+                                    <option value="" selected disabled>Select an event</option>
+                                    <option v-for="ev in categoryEvents" :key="ev.id" :value="ev.name">{{ ev.name }}</option>
+                                </select>
+                                <label>Event Name</label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-register">
+                                <i class="fas fa-user-plus me-2"></i> Complete Registration
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h3><i class="fas fa-calendar-alt me-2"></i>EventPro</h3>
+                        <p>Professional event management solutions for organizations of all sizes.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="#register">Register</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4>Connect With Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Adib Hossain. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="../framework/js/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    events: [
+                        { id: "PY710051", name: "Tech Innovation Conference", category: "Technology", duration: 5 },
+                        { id: "PY710052", name: "Statute Plan Day", category: "Business", duration: 5 },
+                        { id: "PY710053", name: "X-B, Machine Learning Summit", category: "Technology", duration: 10 },
+                        { id: "PY710054", name: "Cybersecurity Workshop", category: "Technology", duration: 4 },
+                        { id: "PY710055", name: "Digital Marketing Essentials", category: "Marketing", duration: 6 },
+                        { id: "PY710056", name: "Blockchain and Cryptocurrency", category: "Finance", duration: 5 },
+                        { id: "PY710057", name: "Entrepreneurship Forum", category: "Business", duration: 7 },
+                        { id: "PY710058", name: "State Science Hounshire", category: "Technology", duration: 12 },
+                        { id: "PY710059", name: "Leadership and Management Summit", category: "Business", duration: 9 }
+                    ],
+                    filters: { id: '', name: '', duration: '', category: 'All' },
+                    form: {
+                        username: '', password: '', confirm: '', category: 'Business', eventName: ''
+                    },
+                    categories: ['All', 'Technology', 'Business', 'Marketing', 'Finance']
+                }
+            },
+            computed: {
+                filteredEvents() {
+                    return this.events.filter(event => {
+                        const matchId = this.filters.id === '' || event.id.toLowerCase().includes(this.filters.id.toLowerCase());
+                        const matchName = this.filters.name === '' || event.name.toLowerCase().includes(this.filters.name.toLowerCase());
+                        const matchDuration = this.filters.duration === '' || event.duration == this.filters.duration;
+                        const matchCategory = this.filters.category === 'All' || event.category === this.filters.category;
+                        return matchId && matchName && matchDuration && matchCategory;
+                    });
+                },
+                categoryEvents() {
+                    return this.events.filter(ev => ev.category === this.form.category);
+                }
+            },
+            methods: {
+                submitForm() {
+                    if (this.form.password !== this.form.confirm) {
+                        alert("Passwords do not match!");
+                        return;
+                    }
+
+                    if (!this.form.eventName) {
+                        alert("Please select an event.");
+                        return;
+                    }
+
+                    // Show the modal
+                    const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+                    modal.show();
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
