@@ -31,16 +31,18 @@ This project demonstrates **front-end web development** skills using Vue.js and 
 
 ## 📂 Project Structure  
 Event Management.html # Main project file
-framework/
-├── css/
-│ ├── bootstrap/ # Bootstrap framework
-│ ├── fontawesome/ # FontAwesome icons
-│ └── styles.css # Custom styles
-└── js/
-└── vue.js/ # Vue.js (v3.5.13)
 
+```bash
+Event-Management/
+├── Event Management.html        # Main project file
+├── framework/
+│   ├── css/
+│   │   ├── bootstrap/           # Bootstrap framework
+│   │   ├── fontawesome/         # FontAwesome icons
+│   │   └── styles.css           # Custom styles
+│   └── js/
+│       └── vue.js/              # Vue.js (v3.5.13)
 
----
 
 ## ⚡ Getting Started  
 
