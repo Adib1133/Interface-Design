@@ -42,8 +42,7 @@ Event-Management/
 │   │   └── styles.css           # Custom styles
 │   └── js/
 │       └── vue.js/              # Vue.js (v3.5.13)
-
-
+```
 ## ⚡ Getting Started  
 
 1. Clone the repository  
