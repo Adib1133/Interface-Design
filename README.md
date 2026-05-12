@@ -50,13 +50,3 @@ Event-Management/
    git clone https://github.com/<your-username>/<repo-name>.git
    cd <repo-name>
 2. Open Event Management.html in your browser
-
-📸 Screenshots
-
-Add your screenshots here
-
-Landing Page
-
-Events Section
-
-Registration Form & Modal
